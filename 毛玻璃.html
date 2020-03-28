@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>毛玻璃</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        body,html{
+            height: 100%;
+        }
+        .box{
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+        .oBox{
+            width: 100%;
+            height: 100%;
+            position: absolute;
+            top: 0;
+            left: 0;
+            z-index: 1;
+            background-position: center center;
+            background-size:100% 100%;
+            -webkit-filter: blur(2px);
+            filter: blur(2px);
+            transition: all .5s linear ;
+        }
+        .oUl{
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%,-50%);
+            width: 800px;
+            height: 500px;
+            display: flex;
+            list-style: none;
+            z-index: 2;
+        }
+        .oUl>li{
+           flex-shrink: 1;
+            width: 600px;
+            background-position: center center;
+            background-size:600% 100%;
+            transition: all .5s linear;
+        }
+        .oUl li:nth-of-type(1){
+            background-color: red;
+            background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585386331529&di=4e62069ee29e3a1d1597b1a2f7a286ef&imgtype=0&src=http%3A%2F%2Fb-ssl.duitang.com%2Fuploads%2Fitem%2F201806%2F20%2F20180620171603_JsPzu.jpeg');
+        }
+        .oUl li:nth-of-type(2){
+            background-color: yellow;
+            background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585386331529&di=903ed8d7c75d85cd13b79d3ac87a519c&imgtype=0&src=http%3A%2F%2Fpic1.win4000.com%2Fwallpaper%2F5%2F579b1f19410c0.jpg');
+        }
+        .oUl li:nth-of-type(3){
+            background-color:blue ;
+            background-image: url('https://timgsa.baidu.com/timg?image&quality=80&size=b9999_10000&sec=1585386331528&di=95fa7662c6cff574f14b221781af8565&imgtype=0&src=http%3A%2F%2Fbpic.588ku.com%2Fback_pic%2F00%2F01%2F77%2F51%2Fa9812c736e33d3b4232c0705aa6f56f8.jpg');
+        }
+        .oUl .active{
+            flex-shrink: 0;
+            background-size:140% 100%;
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <ul class="oUl">
+            <li class="active"></li>
+            <li></li>
+            <li></li>
+        </ul>
+        <div class="oBox"></div>
+    </div>
+</body>
+</html>
+<script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+<script>
+    $('.oBox').css({'backgroundImage':$('.active').css('backgroundImage')});
+    
+    $('.oUl').on("click",'li',function(){
+        if(!$(this).hasClass('active')){
+            $(this).addClass('active').siblings().removeClass('active');
+            $('.oBox').css({'backgroundImage':$(this).css('backgroundImage')});
+        }
+    })
+  
+</script>
