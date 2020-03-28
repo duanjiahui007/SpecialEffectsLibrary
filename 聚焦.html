@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>聚焦</title>
+    <style>
+      body{
+        background-color: #333333;
+      }
+      h1{
+        font-size:60px;
+        color: #3e3c3c;
+        position: relative;
+      }
+      h1::after{
+        content: attr(data-spring);
+        color:transparent;
+        font-size:60px;
+        position: absolute;
+        top: 0;
+        left: 0;
+        background-image: url("https://images.unsplash.com/photo-1579547621869-0ddb5f237392?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1050&q=80");
+        background-position: center center;
+        -webkit-background-clip: text;
+        -moz-background-clip: text;
+        background-clip: text;
+        -webkit-clip-path: circle(30%  at 0 50%);
+        clip-path:circle(30% at 0 50%);
+        animation: spotlight 3s linear infinite;
+      }
+      @keyframes  spotlight{
+        0%{
+          -webkit-clip-path: circle(30%  at 0 50%);
+          clip-path:circle(30% at 0 50%);
+        }
+        50%{
+          -webkit-clip-path: circle(30%  at 100% 50%);
+          clip-path:circle(30% at 100% 50%);
+        }
+        100%{
+          -webkit-clip-path: circle(30%  at 0 50%);
+          clip-path:circle(30% at 0 50%);
+        }
+      }
+
+    </style>
+</head>
+<body>
+      <h1 data-spring="你是天使!">你是天使</h1>
+</body>
+</html>
